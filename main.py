@@ -1,4 +1,12 @@
 import math
+import pydevd_pycharm
+import os
+pydevd_pycharm.settrace(
+    host='localhost',
+    port=12345,
+    stdoutToServer=True,
+    stderrToServer=True
+)
 
 
 class Solver:
