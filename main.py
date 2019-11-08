@@ -1,12 +1,11 @@
 import math
 import pydevd_pycharm
-import sys
-sys.path.append("pydevd-pycharm.egg")
 pydevd_pycharm.settrace(
     host='localhost',
     port=12345,
     stdoutToServer=True,
-    stderrToServer=True
+    stderrToServer=True,
+    suspend=False
 )
 
 
