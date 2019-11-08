@@ -1,6 +1,7 @@
 import math
 import pydevd_pycharm
-import os
+import sys
+sys.path.append("pydevd-pycharm.egg")
 pydevd_pycharm.settrace(
     host='localhost',
     port=12345,
