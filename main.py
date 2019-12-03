@@ -1,12 +1,19 @@
 import math
-import pydevd_pycharm
-pydevd_pycharm.settrace(
-    host='localhost',
-    port=12345,
-    stdoutToServer=True,
-    stderrToServer=True,
-    suspend=False
-)
+import os
+import random
+import time
+
+# telepresence --swap-deployment k8schat --docker-run -it -v $(pwd):/app laammaar/k8schat-dbg ash
+
+if os.environ.get('REMOTE_DBG'):
+    import pydevd_pycharm
+    pydevd_pycharm.settrace(
+        host='172.17.0.1',
+        port=12345,
+        stdoutToServer=True,
+        stderrToServer=True,
+        suspend=False
+    )
 
 
 class Solver:
@@ -26,9 +33,10 @@ class Solver:
 if __name__ == '__main__':
     solver = Solver()
 
-while True:
-    a = int(input("a: "))
-    b = int(input("b: "))
-    c = int(input("c: "))
-    result = solver.demo(a, b, c)
-    print(result)
+    while True:
+        time.sleep(1)
+        a = random.randint(-100, 100)
+        b = random.randint(-100, 100)
+        c = random.randint(-100, 100)
+        result = solver.demo(a, b, c)
+        print(a, b, c, result)

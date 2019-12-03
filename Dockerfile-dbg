@@ -1,0 +1,11 @@
+FROM python:3.7-alpine
+
+ENV REMOTE_DBG=1
+RUN pip install pydevd-pycharm~=192.7142.56
+
+
+COPY main.py /app/
+
+WORKDIR /app
+
+CMD python -u main.py
